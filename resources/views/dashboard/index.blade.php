@@ -21,11 +21,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-8 offset-2">
-                    @if (session()->has('message'))
-                        <div class="alert alert-primary">
-                            {{ session('message') }}
-                        </div>
-                    @endif
+                    @include('partials.message')
                 </div>
             </div>
             <div class="row">
