@@ -11,6 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'UsersController@showLoginForm')->middleware('guest');
+
+Route::get('/login', 'UsersController@showLoginForm')->middleware('guest');
+Route::post('/login', 'UsersController@login')->name('login');
+
+Route::get('/logout', 'UsersController@logout')->name('logout')->middleware('auth');
+
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('auth');
+
+Route::get('activate', 'UsersController@activate');
+
+
+
+
+
