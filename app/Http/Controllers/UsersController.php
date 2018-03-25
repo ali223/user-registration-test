@@ -61,8 +61,14 @@ class UsersController extends Controller
 
         $user->activate();
 
+        if (auth()->check()) {
+            return redirect()
+                ->route('dashboard')
+                ->with('message', 'Account activated successfully');            
+        }
+
         return redirect()
-            ->route('dashboard')
+            ->route('login')
             ->with('message', 'Account activated successfully');
     }
 
